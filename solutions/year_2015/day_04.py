@@ -1,4 +1,5 @@
 import hashlib
+from itertools import count
 
 PUZZLE_INPUT = "ckczppom"
 
@@ -7,18 +8,16 @@ def find_md5_with_leading_zeros(prefix: str, leading_zeros: int) -> int:
     """Find the lowest positive number that produces an MD5 hash
     starting with a given number of leading zeros when appended to the prefix.
     """
-    encoded_input = prefix.encode("utf-8")
-    hash_input = hashlib.md5(encoded_input).hexdigest()
-    number = 0
-    target = "0" * leading_zeros
+    encoded_key = prefix.encode("utf-8")
 
-    while not hash_input.startswith(target):
-        number += 1
-        hash_input = hashlib.md5(
-            encoded_input + str(number).encode("utf-8")
-        ).hexdigest()
+    for number in count(1):
+        hash_digest = hashlib.md5(encoded_key + str(number).encode("utf-8")).hexdigest()
 
-    return number
+        if hash_digest.startswith("0" * leading_zeros):
+            return number
+
+    # Unreachable - count() is infinite
+    raise RuntimeError("Hash not found")
 
 
 def part_one() -> int:
