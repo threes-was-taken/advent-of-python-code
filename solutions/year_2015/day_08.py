@@ -65,3 +65,8 @@ def part_two() -> int:
     encoded_count = sum(len(encode_string(line)) for line in data)
 
     return encoded_count - literal_count
+
+
+if __name__ == "__main__":
+    print("Part One:", part_one())
+    print("Part Two:", part_two())

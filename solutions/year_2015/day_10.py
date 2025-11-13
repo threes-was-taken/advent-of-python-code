@@ -1,3 +1,5 @@
+from itertools import groupby
+
 PUZZLE_INPUT = 3113322113
 
 
@@ -5,24 +7,21 @@ def look_and_say(term: str) -> str:
     """
     Generate the next term in the look-and-say sequence.
 
+    The look-and-say sequence describes runs of identical digits:
+    - "1" becomes "11" (one 1)
+    - "11" becomes "21" (two 1s)
+    - "21" becomes "1211" (one 2, one 1)
+
     Args:
-        term: Current term as a string
+        term: Current sequence term
 
     Returns:
-        Next term as a string
+        Next term in the sequence
     """
-    next_term = []
-    index = 0
+    if not term:
+        return ""
 
-    while index < len(term):
-        count = 1
-        while index + 1 < len(term) and term[index] == term[index + 1]:
-            count += 1
-            index += 1
-        next_term.append(f"{count}{term[index]}")
-        index += 1
-
-    return "".join(next_term)
+    return "".join(f"{sum(1 for _ in group)}{digit}" for digit, group in groupby(term))
 
 
 def part_one() -> int:
@@ -42,3 +41,8 @@ def part_two() -> int:
         term = look_and_say(term)
 
     return len(term)
+
+
+if __name__ == "__main__":
+    print("Part One:", part_one())
+    print("Part Two:", part_two())

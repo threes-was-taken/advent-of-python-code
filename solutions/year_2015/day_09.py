@@ -110,3 +110,8 @@ def part_two() -> int:
     data = read_lines(2015, 9)
     cities, routes = prepare_routes(data)
     return find_optimal_route(cities, routes, find_max=True)
+
+
+if __name__ == "__main__":
+    print("Part One:", part_one())
+    print("Part Two:", part_two())
