@@ -1,3 +1,5 @@
+"""Advent of Code 2015 - Day 12: JSAbacusFramework.io"""
+
 import json
 from typing import Any
 
@@ -26,9 +28,7 @@ def extract_numbers(obj: Any, ignore_red: bool = False) -> list[int]:
         if ignore_red and "red" in obj.values():
             return []
 
-        return [
-            num for value in obj.values() for num in extract_numbers(value, ignore_red)
-        ]
+        return [num for value in obj.values() for num in extract_numbers(value, ignore_red)]
 
     # Base case: not a number, list, or dict
     return []
@@ -50,18 +50,23 @@ def sum_json_numbers(data: str, ignore_red: bool = False) -> int:
     return sum(numbers)
 
 
-def part_one() -> int:
+def part_one(data: str) -> int:
     """Sum all numbers in the JSON document."""
-    data = read_raw(2015, 12)
     return sum_json_numbers(data, ignore_red=False)
 
 
-def part_two() -> int:
+def part_two(data: str) -> int:
     """Sum all numbers, ignoring objects with 'red' property."""
-    data = read_raw(2015, 12)
     return sum_json_numbers(data, ignore_red=True)
 
 
+def solve():
+    """Main solve function."""
+    data = read_raw(2015, 12)
+
+    print(f"Part 1: {part_one(data)}")
+    print(f"Part 2: {part_two(data)}")
+
+
 if __name__ == "__main__":
-    print("Part One:", part_one())
-    print("Part Two:", part_two())
+    solve()

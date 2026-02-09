@@ -1,9 +1,12 @@
+"""Advent of Code 2015, Day 14: Reindeer Olympics"""
+
 from modules.utils.input_reader import read_lines
 
 RACE_DURATION = 2503
 
 
 def parse_reindeer(line: str) -> tuple[int, int, int]:
+    """Parse a line of input describing a reindeer's speed, fly time, and rest time."""
     parts = line.split()
     speed = int(parts[3])
     fly_time = int(parts[6])
@@ -11,9 +14,8 @@ def parse_reindeer(line: str) -> tuple[int, int, int]:
     return speed, fly_time, rest_time
 
 
-def calculate_reindeer_distance(
-    speed: int, fly_time: int, rest_time: int, duration: int
-) -> int:
+def calculate_reindeer_distance(speed: int, fly_time: int, rest_time: int, duration: int) -> int:
+    """Calculate the distance a reindeer travels given its speed, fly time, rest time, and total duration."""
     cycle_time = fly_time + rest_time
     full_cycles = duration // cycle_time
     remaining_time = duration % cycle_time
@@ -24,26 +26,23 @@ def calculate_reindeer_distance(
     return distance
 
 
-def part_one() -> int:
-    data = read_lines(2015, 14)
+def part_one(data: list[str]) -> int:
+    """Find the maximum distance traveled by any reindeer after the race duration."""
 
     reindeer_distances = {}
 
     for reindeer in data:
         speed, fly_time, rest_time = parse_reindeer(reindeer)
 
-        distance = calculate_reindeer_distance(
-            speed, fly_time, rest_time, RACE_DURATION
-        )
+        distance = calculate_reindeer_distance(speed, fly_time, rest_time, RACE_DURATION)
 
         reindeer_distances[reindeer] = distance
 
     return max(reindeer_distances.values())
 
 
-def part_two() -> int:
-    data = read_lines(2015, 14)
-
+def part_two(data: list[str]) -> int:
+    """Calculate the maximum points earned by any reindeer using the lead scoring system."""
     reindeer_stats = []
 
     for reindeer in data:
@@ -65,6 +64,13 @@ def part_two() -> int:
     return max(reindeer_points)
 
 
+def solve():
+    """Main solve function."""
+
+    data = read_lines(2015, 14)
+    print("Part One:", part_one(data))
+    print("Part Two:", part_two(data))
+
+
 if __name__ == "__main__":
-    print("Part One:", part_one())
-    print("Part Two:", part_two())
+    solve()

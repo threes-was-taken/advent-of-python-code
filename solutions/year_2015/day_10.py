@@ -1,3 +1,5 @@
+"""Advent of Code 2015 - Day 10: Elves Look, Elves Say"""
+
 from itertools import groupby
 
 PUZZLE_INPUT = 3113322113
@@ -35,6 +37,7 @@ def part_one() -> int:
 
 
 def part_two() -> int:
+    """Compute the 50th term in the look-and-say sequence starting from PUZZLE_INPUT."""
     term = str(PUZZLE_INPUT)
 
     for _ in range(50):
@@ -43,6 +46,12 @@ def part_two() -> int:
     return len(term)
 
 
+def solve():
+    """Main solve function."""
+
+    print(f"Part 1: {part_one()}")
+    print(f"Part 2: {part_two()}")
+
+
 if __name__ == "__main__":
-    print("Part One:", part_one())
-    print("Part Two:", part_two())
+    solve()

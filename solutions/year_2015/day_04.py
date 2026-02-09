@@ -1,3 +1,5 @@
+"""Advent of Code 2015 - Day 4: The Ideal Stocking Stuffer"""
+
 import hashlib
 from itertools import count
 
@@ -30,6 +32,11 @@ def part_two() -> int:
     return find_md5_with_leading_zeros(PUZZLE_INPUT, 6)
 
 
+def solve():
+    """Main solve function."""
+    print(f"Part 1: {part_one()}")
+    print(f"Part 2: {part_two()}")
+
+
 if __name__ == "__main__":
-    print("Part One:", part_one())
-    print("Part Two:", part_two())
+    solve()

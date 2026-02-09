@@ -1,3 +1,5 @@
+"""Advent of Code 2015 - Day 5: Doesn't He Have Intern-Elves For This?"""
+
 from modules.utils.input_reader import read_lines
 
 
@@ -8,16 +10,9 @@ def find_nice_strings(data: list[str], allow_overlapping: bool) -> int:
     for line in data:
         vowels = sum(1 for char in line if char in "aeiou")
         has_double_letter = any(line[i] == line[i + 1] for i in range(len(line) - 1))
-        has_forbidden_substring = any(
-            substr in line for substr in ["ab", "cd", "pq", "xy"]
-        )
+        has_forbidden_substring = any(substr in line for substr in ["ab", "cd", "pq", "xy"])
 
-        if (
-            vowels >= 3
-            and has_double_letter
-            and not has_forbidden_substring
-            and allow_overlapping
-        ):
+        if vowels >= 3 and has_double_letter and not has_forbidden_substring and allow_overlapping:
             nice_strings_count += 1
         elif not allow_overlapping:
             # For part two, we need to check for the new criteria
@@ -48,20 +43,26 @@ def find_nice_strings(data: list[str], allow_overlapping: bool) -> int:
     return nice_strings_count
 
 
-def part_one() -> int:
+def part_one(data: list[str]) -> int:
     """Solve part one of the challenge."""
-    data = read_lines(2015, 5)
 
     return find_nice_strings(data, allow_overlapping=True)
 
 
-def part_two() -> int:
+def part_two(data: list[str]) -> int:
     """Solve part two of the challenge."""
-    data = read_lines(2015, 5)
 
     return find_nice_strings(data, allow_overlapping=False)
 
 
+def solve():
+    """Main solve function."""
+
+    data = read_lines(2015, 5)
+
+    print(f"Part 1: {part_one(data)}")
+    print(f"Part 2: {part_two(data)}")
+
+
 if __name__ == "__main__":
-    print("Part One:", part_one())
-    print("Part Two:", part_two())
+    solve()

@@ -1,15 +1,16 @@
+"""Advent of Code 2015 - Day 13: Knights of the Dinner Table"""
+
 from itertools import permutations
 
 from modules.utils.input_reader import read_lines
 
 
-def find_happiness(
-    data: list[str], include_me: bool = False
-) -> dict[tuple[str, str], int]:
+def find_happiness(data: list[str], include_me: bool = False) -> dict[tuple[str, str], int]:
     """
     Parse input data to extract happiness values between individuals, optionally including myself.
     Args:
         data: List of strings describing happiness changes
+        include_me: If True, include "Me" in the happiness calculations
     Returns:
         Dictionary mapping (person_a, person_b) to happiness value
     """
@@ -64,18 +65,25 @@ def find_optimal_arrangement(happiness: dict[tuple[str, str], int]) -> int:
     return int(max_happiness)
 
 
-def part_one() -> int:
-    data = read_lines(2015, 13)
+def part_one(data: list[str]) -> int:
+    """Find the optimal seating arrangement without including myself."""
     happiness = find_happiness(data, include_me=False)
     return find_optimal_arrangement(happiness)
 
 
-def part_two() -> int:
-    data = read_lines(2015, 13)
+def part_two(data: list[str]) -> int:
+    """Include myself in the happiness calculations and find the optimal arrangement."""
     happiness = find_happiness(data, include_me=True)
     return find_optimal_arrangement(happiness)
 
 
+def solve():
+    """Main solve function."""
+
+    data = read_lines(2015, 13)
+    print("Part One:", part_one(data))
+    print("Part Two:", part_two(data))
+
+
 if __name__ == "__main__":
-    print("Part One:", part_one())
-    print("Part Two:", part_two())
+    solve()

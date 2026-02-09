@@ -1,3 +1,5 @@
+"""Advent of Code 2015 - Day 8: Matchsticks"""
+
 from modules.utils.input_reader import read_lines
 
 
@@ -33,9 +35,8 @@ def count_memory_chars(line: str) -> int:
     return memory_chars
 
 
-def part_one() -> int:
+def part_one(data: list[str]) -> int:
     """Calculate difference between literal and memory string lengths."""
-    data = read_lines(2015, 8)
 
     literal_count = sum(len(line) for line in data)
     memory_count = sum(count_memory_chars(line[1:-1]) for line in data)
@@ -57,9 +58,8 @@ def encode_string(s: str) -> str:
     return f'"{escaped}"'
 
 
-def part_two() -> int:
+def part_two(data: list[str]) -> int:
     """Calculate difference between encoded and literal string lengths."""
-    data = read_lines(2015, 8)
 
     literal_count = sum(len(line) for line in data)
     encoded_count = sum(len(encode_string(line)) for line in data)
@@ -67,6 +67,13 @@ def part_two() -> int:
     return encoded_count - literal_count
 
 
+def solve():
+    """Main solve function."""
+    data = read_lines(2015, 8)
+
+    print(f"Part 1: {part_one(data)}")
+    print(f"Part 2: {part_two(data)}")
+
+
 if __name__ == "__main__":
-    print("Part One:", part_one())
-    print("Part Two:", part_two())
+    solve()

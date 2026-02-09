@@ -1,3 +1,5 @@
+"""Advent of Code 2015 - Day 11: Corporate Policy"""
+
 SANTAS_PASSWORD = "cqjxjnds"
 
 
@@ -37,8 +39,7 @@ def is_valid_password(pw: str) -> bool:
 
     # Rule 2: Password must contain at least one increasing straight of three letters
     has_straight = any(
-        ord(pw[index]) + 1 == ord(pw[index + 1])
-        and ord(pw[index]) + 2 == ord(pw[index + 2])
+        ord(pw[index]) + 1 == ord(pw[index + 1]) and ord(pw[index]) + 2 == ord(pw[index + 2])
         for index in range(len(pw) - 2)
     )
 
@@ -80,13 +81,21 @@ def find_next_password(current_password: str) -> str:
 
 
 def part_one() -> str:
+    """Find the next valid password after Santa's current password."""
     return find_next_password(SANTAS_PASSWORD)
 
 
 def part_two() -> str:
+    """Find the next valid password after the one found in part one."""
     return find_next_password(part_one())
 
 
+def solve():
+    """Main solve function."""
+
+    print(f"Part 1: {part_one()}")
+    print(f"Part 2: {part_two()}")
+
+
 if __name__ == "__main__":
-    print("Part One:", part_one())
-    print("Part Two:", part_two())
+    solve()

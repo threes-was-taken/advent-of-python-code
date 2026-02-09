@@ -1,3 +1,5 @@
+"""Advent of Code 2015 - Day 7: Some Assembly Required"""
+
 from modules.utils.input_reader import read_lines
 
 
@@ -20,9 +22,7 @@ def complement_value(value: int) -> int:
     return ~value & 0xFFFF
 
 
-def emulate_circuit(
-    circuit: dict[str, str], processed_wires: dict[str, int]
-) -> dict[str, int]:
+def emulate_circuit(circuit: dict[str, str], processed_wires: dict[str, int]) -> dict[str, int]:
     """Emulate the circuit until no more wires can be processed."""
     while True:
         progress_made = False
@@ -101,9 +101,8 @@ def emulate_circuit(
     return processed_wires
 
 
-def part_one() -> int:
+def part_one(data: list[str]) -> int:
     """Solve part one of the challenge."""
-    data = read_lines(2015, 7)
 
     circuit = {}
     processed_wires = {}
@@ -120,11 +119,9 @@ def part_one() -> int:
     return processed_wires.get("a", 0)
 
 
-def part_two() -> int:
+def part_two(data: list[str]) -> int:
     """Solve part two of the challenge."""
-    wire_a_signal = part_one()
-
-    data = read_lines(2015, 7)
+    wire_a_signal = part_one(data)
 
     circuit = {}
     processed_wires = {"b": wire_a_signal}
@@ -140,6 +137,13 @@ def part_two() -> int:
     return processed_wires.get("a", 0)
 
 
+def solve():
+    """Main solve function."""
+    data = read_lines(2015, 7)
+
+    print(f"Part 1: {part_one(data)}")
+    print(f"Part 2: {part_two(data)}")
+
+
 if __name__ == "__main__":
-    print("Part One:", part_one())
-    print("Part Two:", part_two())
+    solve()

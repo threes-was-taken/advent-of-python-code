@@ -1,3 +1,5 @@
+"""Advent of Code 2015, Day 15: Science for Hungry People"""
+
 from modules.utils.input_reader import read_lines
 
 AVAILABLE_TEASPOONS = 100
@@ -80,9 +82,8 @@ def find_best_cookie_score(include_calories: bool = False) -> int:
     return max_score
 
 
-def part_one() -> int:
-    data = read_lines(2015, 15)
-
+def part_one(data: list[str]) -> int:
+    """Find the best cookie score without calorie constraints."""
     ingredients = {}
 
     for line in data:
@@ -92,8 +93,8 @@ def part_one() -> int:
     return find_best_cookie_score(include_calories=False)
 
 
-def part_two() -> int:
-    data = read_lines(2015, 15)
+def part_two(data: list[str]) -> int:
+    """Find the best cookie score for combinations that have exactly 500 calories."""
 
     ingredients = {}
 
@@ -104,6 +105,14 @@ def part_two() -> int:
     return find_best_cookie_score(include_calories=True)
 
 
+def solve():
+    """Main solve function."""
+
+    data = read_lines(2015, 15)
+
+    print(f"Part 1: {part_one(data)}")
+    print(f"Part 2: {part_two(data)}")
+
+
 if __name__ == "__main__":
-    print("Part One:", part_one())
-    print("Part Two:", part_two())
+    solve()

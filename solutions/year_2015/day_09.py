@@ -1,3 +1,5 @@
+"""Advent of Code 2015 - Day 9: All in a Single Night"""
+
 from itertools import pairwise, permutations
 
 from modules.utils.input_reader import read_lines
@@ -98,20 +100,25 @@ def find_optimal_route(
     )
 
 
-def part_one() -> int:
+def part_one(data: list[str]) -> int:
     """Calculate the shortest route visiting all cities exactly once."""
-    data = read_lines(2015, 9)
     cities, routes = prepare_routes(data)
     return find_optimal_route(cities, routes, find_max=False)
 
 
-def part_two() -> int:
+def part_two(data: list[str]) -> int:
     """Calculate the longest route visiting all cities exactly once."""
-    data = read_lines(2015, 9)
     cities, routes = prepare_routes(data)
     return find_optimal_route(cities, routes, find_max=True)
 
 
+def solve():
+    """Main solve function."""
+    data = read_lines(2015, 9)
+
+    print(f"Part 1: {part_one(data)}")
+    print(f"Part 2: {part_two(data)}")
+
+
 if __name__ == "__main__":
-    print("Part One:", part_one())
-    print("Part Two:", part_two())
+    solve()

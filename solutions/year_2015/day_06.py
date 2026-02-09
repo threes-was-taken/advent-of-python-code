@@ -1,3 +1,5 @@
+"""Advent of Code 2015 - Day 6: Probably a Fire Hazard"""
+
 from modules.utils.input_reader import read_lines
 
 
@@ -21,9 +23,8 @@ def get_instruction(line: str) -> tuple[str, tuple[int, int], tuple[int, int]]:
     return action, start_coords, end_coords
 
 
-def part_one() -> int:
+def part_one(data: list[str]) -> int:
     """Solve part one of the challenge."""
-    data = read_lines(2015, 6)
 
     light_grid = [[0 for _ in range(1000)] for _ in range(1000)]
     lights_on = 0
@@ -55,9 +56,8 @@ def part_one() -> int:
     return lights_on
 
 
-def part_two() -> int:
+def part_two(data: list[str]) -> int:
     """Solve part two of the challenge."""
-    data = read_lines(2015, 6)
 
     light_grid = [[0 for _ in range(1000)] for _ in range(1000)]
     total_brightness = 0
@@ -84,6 +84,13 @@ def part_two() -> int:
     return total_brightness
 
 
+def solve():
+    """Main solve function."""
+    data = read_lines(2015, 6)
+
+    print(f"Part 1: {part_one(data)}")
+    print(f"Part 2: {part_two(data)}")
+
+
 if __name__ == "__main__":
-    print("Part One:", part_one())
-    print("Part Two:", part_two())
+    solve()

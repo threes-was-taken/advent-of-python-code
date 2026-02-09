@@ -73,15 +73,23 @@ def calculate_amount_of_zeros(include_passing_zeros: bool) -> int:
 
 
 def part_one() -> int:
+    """Calculate the amount of times we land on 0."""
     return calculate_amount_of_zeros(include_passing_zeros=False)
 
 
 def part_two() -> int:
+    """Calculate the amount of times we land on 0, including passing zeros."""
     return calculate_amount_of_zeros(
         include_passing_zeros=True,
     )
 
 
+def solve():
+    """Main solve function."""
+
+    print(f"Part 1: {part_one()}")
+    print(f"Part 2: {part_two()}")
+
+
 if __name__ == "__main__":
-    print(f"Part One: {part_one()}")
-    print(f"Part Two: {part_two()}")
+    solve()

@@ -1,10 +1,10 @@
+"""Advent of Code 2015 - Day 2: I Was Told There Would Be No Math"""
+
 from modules.utils.input_reader import read_lines
 
 
-def part_one() -> int:
+def part_one(data: list[str]) -> int:
     """Solve part one of the challenge."""
-    data = read_lines(2015, 2)
-
     total_area = 0
 
     for line in data:
@@ -19,10 +19,8 @@ def part_one() -> int:
     return total_area
 
 
-def part_two() -> int:
+def part_two(data: list[str]) -> int:
     """Solve part two of the challenge."""
-    data = read_lines(2015, 2)
-
     total_ribbon = 0
 
     for line in data:
@@ -34,6 +32,13 @@ def part_two() -> int:
     return total_ribbon
 
 
+def solve():
+    """Main solve function."""
+    data = read_lines(2015, 2)
+
+    print(f"Part 1: {part_one(data)}")
+    print(f"Part 2: {part_two(data)}")
+
+
 if __name__ == "__main__":
-    print("Part One:", part_one())
-    print("Part Two:", part_two())
+    solve()

@@ -1,10 +1,10 @@
+"""Advent of Code 2015 - Day 3: Perfectly Spherical Houses in a Vacuum"""
+
 from modules.utils.input_reader import read_raw
 
 
-def part_one() -> int:
+def part_one(data: str) -> int:
     """Solve part one of the challenge."""
-    data = read_raw(2015, 3)
-
     houses_visited = set()
     x, y = 0, 0
     houses_visited.add((x, y))
@@ -24,9 +24,8 @@ def part_one() -> int:
     return len(houses_visited)
 
 
-def part_two() -> int:
+def part_two(data: str) -> int:
     """Solve part two of the challenge."""
-    data = read_raw(2015, 3)
 
     houses_visited = set()
     santa_x, santa_y = 0, 0
@@ -60,6 +59,13 @@ def part_two() -> int:
     return len(houses_visited)
 
 
+def solve():
+    """Main solve function."""
+    data = read_raw(2015, 3)
+
+    print(f"Part 1: {part_one(data)}")
+    print(f"Part 2: {part_two(data)}")
+
+
 if __name__ == "__main__":
-    print("Part One:", part_one())
-    print("Part Two:", part_two())
+    solve()

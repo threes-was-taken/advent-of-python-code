@@ -7,8 +7,8 @@ def read_lines(year: int, day: int) -> List[str]:
     input_path = (
         Path(__file__).parent.parent.parent
         / "solutions"
+        / f"year_{year}"
         / "inputs"
-        / str(year)
         / f"day_{day:02d}.txt"
     )
     with open(input_path, "r") as f:
@@ -20,8 +20,8 @@ def read_raw(year: int, day: int) -> str:
     input_path = (
         Path(__file__).parent.parent.parent
         / "solutions"
+        / f"year_{year}"
         / "inputs"
-        / str(year)
         / f"day_{day:02d}.txt"
     )
     with open(input_path, "r") as f:
