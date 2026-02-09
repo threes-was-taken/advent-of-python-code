@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Benchmark AoC solutions."""
 
+import importlib
 import sys
 import time
 from pathlib import Path
@@ -8,8 +9,6 @@ from pathlib import Path
 # Add project root to Python path
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
-
-import importlib
 
 
 def benchmark_solution(year: int, day: int, runs: int = 10):
